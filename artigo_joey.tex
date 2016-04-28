@@ -96,7 +96,7 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 \titulo{Suíte de testes\\para biblioteca de engenharia}
-\autor{Jonhnatha Trigueiro}}
+\autor{Jonhnatha Trigueiro}
 \local{Brasil}
 \data{2016}
 % ---
@@ -181,15 +181,10 @@
 
 % resumo em português
 \begin{resumoumacoluna}
- a
- Conforme a ABNT NBR 6022:2003, o resumo é elemento obrigatório, constituído de
- uma sequência de frases concisas e objetivas e não de uma simples enumeração
- de tópicos, não ultrapassando 250 palavras, seguido, logo abaixo, das palavras
- representativas do conteúdo do trabalho, isto é, palavras-chave e/ou
- descritores, conforme a NBR 6028. (\ldots) As palavras-chave devem figurar logo
- abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
- ponto e finalizadas também por ponto.
- 
+A proposta do artigo é criar uma suite de testes para biblioteca de engenharia. Esta abordará a construção da biblioteca e os passos necessários para torná-la testável. 
+Haverá a configuração do sistema de build para que esta possa ser integrada às ferramentas que realizem os testes e métricas de forma automatizada, assim como rege o funcionamento da Integração contínua.
+Também abordaremos as forma de como a comunidade opensource conseguirá manipular o código, criando um modelo de trabalho progressivo.
+
  \vspace{\onelineskip}
  
  \noindent
@@ -210,148 +205,72 @@
 \section*{Introdução}
 \addcontentsline{toc}{section}{Introdução}
 
-Desenvolvimento guiado à testes é um processo de desenvolvimento de software
+Desenvolvimento guiado à testes é um processo de criação de software
 que se baseia na repetição de um ciclo de desenvolvimento muito curto e definido.
 Como objetivos dessa abordagem se pode citar os seguintes: Produtividade no desenvolvimento,
 código fonte de fácil manutenção e confiabilidade do código.
 
+A integração contínua, na prática, é uma técnica de mesclar o código de vários desenvolvedores em uma linha comum compartilhada de forma a ser feito várias vezes ao dia. Foi proposto inicialmente por Grady Booch em seu método 1991 e é usado com muita intensidade no método de desenvolvimento ágil XP, que advoga realizar o processo de integração continua mais de uma vez por dia.
+
 % ----------------------------------------------------------
 % Seção de explicações
-% ----------------------------------------------------------
+% ----------------------------------------------------------i
+
 \section{Desenvolvimento}
 
 \subsection{Teste}
 
-A norma ABNT NBR 6022:2003 não estabelece uma margem específica a ser utilizada
-no artigo científico. Dessa maneira, caso deseje alterar as margens, utilize os
-comandos abaixo:
+O conceito de teste é um termo abrangente. Vias gerais, significa firmar convicção de um juiz sobre a verdade dos fatos alegados pelas partes em juízo. Em programação este termo pode ser lido como "a convicção do desenvolvedor" sobre a confiabilidade de que o sistema desenvolvido irá funcionar conforme esperado.
 
-\begin{verbatim}
-   \setlrmarginsandblock{3cm}{3cm}{*}
-   \setulmarginsandblock{3cm}{3cm}{*}
-   \checkandfixthelayout
-\end{verbatim}
+Há algumas fases para o teste de software. Cada um visa abranger um escopo no ciclo de desenvolvimento. Podemos citar os seguintes:
+\begin{itemize}
+	\item Teste de unidade;
+	\item Teste de integração;
+	\item Teste de sistema;
+	\item Teste de aceitação e
+	\item Teste de operação.
+\end{itemize}
 
-\subsection{Duas colunas}
+A rotina de testes, apesar de ser de fácil compreensão, requer disciplina por parte do desenvolvedor, que, precisa pensar em código fracamente acoplado. Leia-se "código fracamente acoplado" aquele o qual os as funcionalidades são dispostas em funções, com entradas e saídas simpels, de modo que se comprometa a realizar apenas uma competência.
 
-É comum que artigos científicos sejam escritos em duas colunas. Para isso,
-adicione a opção \texttt{twocolumn} à classe do documento, como no exemplo:
+\subsubsection{Teste de unidade}
 
-\begin{verbatim}
-   \documentclass[article,11pt,oneside,a4paper,twocolumn]{abntex2}
-\end{verbatim}
+É o menor grupo de testes. Estes testam funções específicas. Dado uma entrada e saída conhecidas pelo desenvolvedor, a suite de testes comparará o resultado da aplicação da função com a saída esperada. Dependendo do método de asserção escolhido, o teste irá passar ou falhar.
 
-É possível indicar pontos do texto que se deseja manter em apenas uma coluna,
-geralmente o título e os resumos. Os resumos em única coluna em documentos com
-a opção \texttt{twocolumn} devem ser escritos no ambiente
-\texttt{resumoumacoluna}:
+\subsection{Biblioteca de Engenharia}
+O software o qual será desenvolvido a suite de testes será a biblioteca de Engenharia, criada colaborativamente pelo professor André Felipe Dantas.\\
+A biblioteca foi desenvolvida em C++ e possui as seguintes funcionalidades, inicialmente:
 
-\begin{verbatim}
-   \twocolumn[              % INICIO DE ARTIGO EM DUAS COLUNAS
+\begin{itemize}
+	\item Trabalhar matrizes;
+	\item Trabalhar com polinômios;
+	\item Realizar operações matriciais;
+\end{itemize}
 
-     \maketitle             % pagina de titulo
+Também é previsto para a biblioteca, como roadmap os seguintes recursos:
 
-     \renewcommand{\resumoname}{Nome do resumo}
-     \begin{resumoumacoluna}
-        Texto do resumo.
-      
-        \vspace{\onelineskip}
- 
-        \noindent
-        \textbf{Palavras-chave}: latex. abntex. editoração de texto.
-     \end{resumoumacoluna}
-   
-   ]                        % FIM DE ARTIGO EM DUAS COLUNAS
-\end{verbatim}
+\begin{itemize}
+	\item Representar modelos matemáticos para sistemas conhecidos;
+	\item Sintonizar sistemas dado modelo escolhido, método de sintonia e entrada de dados, achando melhor combinação;
+\end{itemize}
 
-\subsection{Recuo do ambiente \texttt{citacao}}
+Usaremos os seguintes recursos:
 
-Na produção de artigos (opção \texttt{article}), pode ser útil alterar o recuo
-do ambiente \texttt{citacao}. Nesse caso, utilize o comando:
+\subsection{GIT}
+O GIT é um software de versionamento de código, desenvolvido por Linux Torvalds, que faz com que o código fonte possa ser mantido sobre um sistema de controle de versão. Este é importante pois contribui para o processo colaborativo, essencial na comunidade Opensource.
 
-\begin{verbatim}
-   \setlength{\ABNTEXcitacaorecuo}{1.8cm}
-\end{verbatim}
+\subsection{TravisCI}
+É um serviço se integração contínua usado para executar o processo de build e teste de projetos de software geralmente hospedados no GitHub.
 
-Quando um documento é produzido com a opção \texttt{twocolumn}, a classe
-\textsf{abntex2} automaticamente altera o recuo padrão de 4 cm, definido pela
-ABNT NBR 10520:2002 seção 5.3, para 1.8 cm.
+\subsection{CXXTest}
+É um framework de testes unitários para C++ que é similar, em essência, ao JUnit, CppUnit e xUnit. É de fácil utilização porque não requer precompilar a biblioteca de teste. Também não requer recursos avançados, como RTTI por exemplo, e possui uma forma bastante flexível de descoberta de testes.
 
-\section{Cabeçalhos e rodapés customizados}
+\subsection{Processo de desenvolvimento}
+Será mapeado, individualmente os módulos da aplicação fazendo uma análise do quão acoplado está o código. Com base nesses dados será iniciado o processo de desacoplação de código e criação dos testes sob demanda.
 
-Diferentes estilos de cabeçalhos e rodapés podem ser criados usando os
-recursos padrões do \textsf{memoir}.
+Os testes precisarão, necessariamente começar pelos métodos construtores e ir avançando em cada método subsequente. Também é necessário fazer asserções simples.
 
-Um estilo próprio de cabeçalhos e rodapés pode ser diferente para páginas pares
-e ímpares. Observe que a diferenciação entre páginas pares e ímpares só é
-utilizada se a opção \texttt{twoside} da classe \textsf{abntex2} for utilizado.
-Caso contrário, apenas o cabeçalho padrão da página par (\emph{even}) é usado.
-
-Veja o exemplo abaixo cria um estilo chamado \texttt{meuestilo}. O código deve
-ser inserido no preâmbulo do documento.
-
-\begin{verbatim}
-%%criar um novo estilo de cabeçalhos e rodapés
-\makepagestyle{meuestilo}
-  %%cabeçalhos
-  \makeevenhead{meuestilo} %%pagina par
-     {topo par à esquerda}
-     {centro \thepage}
-     {direita}
-  \makeoddhead{meuestilo} %%pagina ímpar ou com oneside
-     {topo ímpar/oneside à esquerda}
-     {centro\thepage}
-     {direita}
-  \makeheadrule{meuestilo}{\textwidth}{\normalrulethickness} %linha
-  %% rodapé
-  \makeevenfoot{meuestilo}
-     {rodapé par à esquerda} %%pagina par
-     {centro \thepage}
-     {direita} 
-  \makeoddfoot{meuestilo} %%pagina ímpar ou com oneside
-     {rodapé ímpar/onside à esquerda}
-     {centro \thepage}
-     {direita}
-\end{verbatim}
-
-Para usar o estilo criado, use o comando abaixo imediatamente após um dos
-comandos de divisão do documento. Por exemplo:
-
-\begin{verbatim}
-   \begin{document}
-     %%usar o estilo criado na primeira página do artigo:
-     \pretextual
-     \pagestyle{meuestilo}
-     
-     \maketitle
-     ...
-     
-     %%usar o estilo criado nas páginas textuais
-     \textual
-     \pagestyle{meuestilo}
-     
-     \chapter{Novo capítulo}
-     ...
-   \end{document}  
-\end{verbatim}
-   
-Outras informações sobre cabeçalhos e rodapés estão disponíveis na seção 7.3 do
-manual do \textsf{memoir} \cite{memoir}.
-
-\section{Mais exemplos no Modelo Canônico de Trabalhos Acadêmicos}
-
-Este modelo de artigo é limitado em número de exemplos de comandos, pois são
-apresentados exclusivamente comandos diretamente relacionados com a produção de
-artigos.
-
-Para exemplos adicionais de \abnTeX\ e \LaTeX, como inclusão de figuras,
-fórmulas matemáticas, citações, e outros, consulte o documento
-\citeonline{abntex2modelo}.
-
-\section{Consulte o manual da classe \textsf{abntex2}}
-
-Consulte o manual da classe \textsf{abntex2} \cite{abntex2classe} para uma
-referência completa das macros e ambientes disponíveis.
+Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no GitHub e iniciado um projeto de build automatizado no Travis CI.
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
@@ -362,16 +281,16 @@ referência completa das macros e ambientes disponíveis.
 % ---
 % Conclusão
 % ---
-\section*{Considerações finais}
-\addcontentsline{toc}{section}{Considerações finais}
+%\section*{Considerações finais}
+%\addcontentsline{toc}{section}{Considerações finais}
 
-\lipsum[1]
+%\lipsum[1]
 
-\begin{citacao}
-\lipsum[2]
-\end{citacao}
+%\begin{citacao}
+%\lipsum[2]
+%\end{citacao}
 
-\lipsum[3]
+%\lipsum[3]
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -385,24 +304,11 @@ referência completa das macros e ambientes disponíveis.
 % \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
 
 % titulo em inglês
-\titulo{Canonical academic article model with \abnTeX}
-\emptythanks
-\maketitle
+%\titulo{Canonical academic article model with \abnTeX}
+%\emptythanks
+%\maketitle
 
 % resumo em português
-\renewcommand{\resumoname}{Abstract}
-\begin{resumoumacoluna}
- \begin{otherlanguage*}{english}
-   According to ABNT NBR 6022:2003, an abstract in foreign language is a back
-   matter mandatory element.
-
-   \vspace{\onelineskip}
- 
-   \noindent
-   \textbf{Keywords}: latex. abntex.
- \end{otherlanguage*}  
-\end{resumoumacoluna}
-
 % ]  				% FIM DE ARTIGO EM DUAS COLUNAS
 % ---
 
@@ -427,15 +333,15 @@ referência completa das macros e ambientes disponíveis.
 % ---
 % Inicia os apêndices
 % ---
-\begin{apendicesenv}
+%\begin{apendicesenv}
 
 % ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % ----------------------------------------------------------
-\lipsum[55-57]
+%\lipsum[55-57]
 
-\end{apendicesenv}
+%\end{apendicesenv}
 % ---
 
 % ----------------------------------------------------------
@@ -446,15 +352,15 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % Inicia os anexos
 % ---
 %\anexos
-\begin{anexosenv}
+%\begin{anexosenv}
 
 % ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
+%\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+%parturient montes nascetur ridiculus mus}
 % ---
 
-\lipsum[31]
+%\lipsum[31]
 
-\end{anexosenv}
+%\end{anexosenv}
 
 \end{document}
