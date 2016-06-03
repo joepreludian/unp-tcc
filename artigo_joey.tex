@@ -253,9 +253,9 @@ O SSH foi projetado para ser uma substituição para o Telnel e para protocolos 
 
 Ferramenta de controle de versão criado por \textbf{Linus Torvalds} em 2005. É amplamente utilizada para desenvolvimento de software e outras tarefas de controle de versão. É um sistema distribuído de controle de revisão com ênfase na velocidade e não concomitante ao repositório remoto. 
 
-O design desse projeto foi a síntese da experiência de Torvalds com o projeto Linux. Ele precisava manter um projeto largo e distribuído ao mesmo tempo que precisava de um ambiente de trabalho funcional. Pra isso adotou as seguintes escolhas de implementação:
+O design desse projeto foi a síntese da experiência de Torvalds com o projeto Linux. Ele precisava manter um projeto largo e distribuído ao mesmo tempo que precisava de um ambiente de trabalho funcional. Pra isso adotou as seguintes características de implementação:
 
-\subsubsection{Forte suporte para desenvolvimento não linear}
+\subsubsection{Suporte Forte para desenvolvimento não linear}
 Possui suporte rápido para ramificação (branching) e mesclagem (merging) e inclui ferramentas específicas para visualizar e navegar no histórico de desenvolvimento de modo a poder reconstruir toda a arvore de commits. Commit é um conjunto de alterações feita em um código fonte.
 
 \begin{figure}[!h]
@@ -269,8 +269,25 @@ Possui suporte rápido para ramificação (branching) e mesclagem (merging) e in
 
 O GIT dá à cada desenvolvedor uma cópia local de todo o histórico de desenvolvimento. Essas modificações são importadas como branches adicionais de desenvolvimento e podem ser mescladas da mesma forma feita localmente.
 
-\subsubsection{Compatibilidade com os protocolos existentes}
+\subsubsection{Compatibilidade com os protocolos de rede existentes}
 Repositório é o nome dado ao local de trabalho do GIT. Repositórios podem ser publicados via protocolo HTTP, FTP, rsync (até a versão 2.8.0), a um protocolo GIT utilizando socket ou SSH. Este último é amplamente utilizado por sua segurança e flexibilidade.
+
+\subsubsection{Manipulação eficiente de grandes projetos}
+Linus Torvalds descreve que o GIT como sendo rápido e escalável. A coleta de histórico de alterações pode ser extremamente rápida pelo simples fato de ser realizada localmente, dado sua natureza Distribuída.
+
+\subsubsection{Autenticação Criptografada do histórico}
+O histórico do GIT é armazenado de forma que uma versão particular (um commit) depende do seu histórico completo até o presente commit. Este ganha uma assinatura garantindo que versões anteriores não sejam substituídas sem que se seja notado.
+
+\subsubsection{Design baseado em \textit{Toolkit} e estratégias plugáveis de mesclagem de código}
+O GIT foi projetado com um conjunto de programas escritos em C e uma série de \textit{shell scripts} que produzem \textit{wrappers} nestes aplicativos. Sua concepção desacoplada torna fácil a atuação em cadeia de várias aplicações para se atingir o objetivo desejado.
+
+O git possui uma forma bem definida de modelo de mesclagem de código. Existem muitos algorítmos que se conectam ao modelo que finalizam o processo de mesclagem. Caso nenhuma das estratégias existentes funcionem a própria ferramenta se encarrega de iniciar o modo manual de mesclagem de código, onde o desenvolvedor "resolve" o conflito.
+
+\subsubsection{Resíduos se armazenam a não ser que sejam limpos}
+O foco do GIT é fazer com que os dados não sejam perdidos. Abortar operações ou reverter à versões anteriores do código podem deixar trechos de código sem utilização pelo repositório. Por padrão o GIT mantém esses códigos, por menores que sejam, na sua estrutura a não ser rotinas de limpeza sejam executadas.
+
+\subsubsection{Compactação periódica de código}
+Git armazena cada novo arquivo criado como um arquivo separado. Compactar arquivos individualmente torna o processo lento e ineficiente. Como estratégia para otimização de tempo, o GIT empacota grupos de arquivos em unidades chamadas \textit{packfile} e as compacta aumentando drásticamente a velocidade do repositório.
 
 \subsection{GitHub}
 É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no hanking do Alexa.
