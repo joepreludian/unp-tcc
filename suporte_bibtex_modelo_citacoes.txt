@@ -19,3 +19,7 @@
     url="http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1034&context=csse_fac",
     year=2015
 }
+
+---
+http://arxiv.org/abs/1512.01862
+http://www.joinville.udesc.br/portal/professores/claudinei/materiais/SOFT_slide_09_Teste_Software.pdf
