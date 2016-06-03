@@ -181,25 +181,23 @@
 
 % resumo em português
 \begin{resumoumacoluna}
-A proposta do artigo é criar uma suite de testes para biblioteca de engenharia. Esta abordará a construção da biblioteca e os passos necessários para torná-la testável.
-Haverá a configuração do sistema de build para que esta possa ser integrada às ferramentas que realizem os testes e métricas de forma automatizada, assim como rege o funcionamento da Integração contínua.
-Também abordaremos as forma de como a comunidade opensource conseguirá manipular o código, criando um modelo de trabalho progressivo.
+É proposto a criação uma suite de testes para Biblioteca de Engenharia. Atualmente a biblioteca é de difícil manutenção, consequentemente de lento desenvolvimento. Esta abordará a reforma da biblioteca e os passos necessários para torná-la testável, servindo de base para desenvolvimento colaborativo. Será iniciado um novo projeto com CMake, versionado no GIT e Publicado no GitHUB. Será configurado o Integrador contínuo TravisCI para a realização do processo de \textit{build}, executando os testes em nuvem. Tem-se como objetivo a redução do tempo de desenvolvimento, aumento da confiabilidade de código e desacoplamento do código, padrão em projetos opensource.
 
  \vspace{\onelineskip}
  
  \noindent
- \textbf{Palavras-chave}: Teste, Test Driven Development, Integração Contínua
+ \textbf{Palavras-chave}: Teste, Desenvolvimento Orientado à Testes, Integração Contínua
 \end{resumoumacoluna}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
-   This is the english abstract.
+   It's proposed creating a test suite to a Engineering Library. Actually this library is difficult to maintain, accordingly of slow development. This will approach the reforming of library and the steps needed to make it testable, serving as base to collaborative development. Will be started a new CMake, GIT versioned project published at GitHUB. Also will be configured TravisCI Continuous Integration service for building process, executing on cloud tests. Has as goal reduce development time, raising code confiability and code decoupling, standard in opensource projects.
 
    \vspace{\onelineskip}
  
    \noindent 
-   \textbf{Key-words}: latex. abntex. text editoration.
+   \textbf{Key-words}: Testing, Test Driven Development, Continuous Integration.
  \end{otherlanguage*}
 \end{resumo}
 
@@ -384,6 +382,16 @@ Conforme o código fonte vai se tornando maior, o nível de complexidade do algo
 \subsection{Metodologia}
 Com base no problema proposto se faz necessário utilizar a abordagem do desenvolvimento orientado à testes (TDD, do inglês "Test Driven Development"), que consiste em uma aplicação que fará o teste do software em questão com base em suas classes e métodos em um algorítmo de teste unitário.
 
+Como o já existe um código legado, o mesmo precisa ser preparado para que este possa se tornar testável. Este comportamento é incomum relacionado à definição de desenvolvimento guiado à testes:
+
+\begin{citacao}
+The test-driven development strategy 
+requires writing automated tests prior to 
+developing functional code in small, rapid 
+iterations.
+	\cite[Introduction]{testdrivendevelopment.1}
+\end{citacao}
+
 O projeto será formatado utilizando o \textit{CMake}. Este, por sua vez, organizará todo o código fonte do projeto de forma que seja agnóstico de compilador, ou seja, qualquer IDE será capaz de utilizar esse código fonte e, dependendo da arquitetura e compilador utilizado, o cmake será capaz de gerar a estrutura do projeto para o alvo. 
 
 O teste, por sua vez, é realizado com a suíte de testes \textbf{CXXTest}, através de um processo que consiste em dois passos:
@@ -396,12 +404,12 @@ O teste, por sua vez, é realizado com a suíte de testes \textbf{CXXTest}, atra
 
 Com isso, integraremos tanto o código fonte quanto o código dos testes do projeto no GIT e faremos o \textit{push} desse repositório para o \textit{GitHUB}. Neste passo, teremos integrado ao projeto um serviço de build que estará escutando o repositório através de \textit{Webhooks} e disparará uma tarefa de coletar o último commit e executará a rotina de teste proposta.
 
-\subsection{Processo de desenvolvimento}
-Será mapeado, individualmente os módulos da aplicação fazendo uma análise do quão acoplado está o código. Com base nesses dados será iniciado o processo de desacoplação de código e criação dos testes sob demanda.
 
-Os testes precisarão, necessariamente começar pelos métodos construtores e ir avançando em cada método subsequente. Também é necessário fazer asserções simples.
+%% ADICIONAR INFO SOBRE BENEFICIOS DO PROCESSO COMO RESULTADO ESPERADO %%
 
-Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no GitHub e iniciado um projeto de build automatizado no Travis CI.
+%\subsection{Processo de desenvolvimento}
+%\subsubsection{Planejamento para desenvolvimento do projeto}
+
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
@@ -412,16 +420,16 @@ Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no 
 % ---
 % Conclusão
 % ---
-\section*{Considerações finais}
-\addcontentsline{toc}{section}{Considerações finais}
+%\section*{Considerações finais}
+%\addcontentsline{toc}{section}{Considerações finais}
 
-\lipsum[1]
+%\lipsum[1]
 
-\begin{citacao}
-\lipsum[2]
-\end{citacao}
+%\begin{citacao}
+%\lipsum[2]
+%\end{citacao}
 
-\lipsum[3]
+%\lipsum[3]
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -431,9 +439,10 @@ Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no 
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
+\pagebreak
 \bibliography{artigo_joey}
 \nocite{cpluspluscom.1}
-\nocite{testdrivendevelopment.1}
+\nocite{cmakeorg.1}
 
 
 % ----------------------------------------------------------
