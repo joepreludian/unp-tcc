@@ -207,14 +207,29 @@ código fonte de fácil manutenção e confiabilidade do código.
 
 A integração contínua, na prática, é uma técnica de mesclar o código de vários desenvolvedores em uma linha comum compartilhada de forma a ser feito várias vezes ao dia. Foi proposto inicialmente por Grady Booch em seu método 1991 e é usado com muita intensidade no método de desenvolvimento ágil XP, que advoga realizar o processo de integração continua mais de uma vez por dia.
 
+A biblioteca de Engenharia foi criada na intenção de tornar prático os conhecimentos adquiridos durante o curso de Engenharia de computação. Esta possui um conjunto de implementações que precisam ser mantidas por uma série de futuros profissionais.
+
+A abordagem de concepção de softwares guiado à testes será implementada sobre a Biblioteca, dispondo-se das melhores ferramentas para se atingir tal objetivo. Isto incluirá os seguintes pontos:
+
+\begin{itemize}
+	\item{Organização do repositório GIT atual}
+	\item{Inclusão das classes de teste na biblioteca}
+	\item{Configuração da ferramenta de integração contínua para realização dos testes}
+	\item{Gerar documentação para novos desenvolvedores utilizarem e contribuírem com a ferramenta}
+\end{itemize}
+
+O foco deste projeto visa a criação de uma metodologia de trabalho assim como a utilização de uma série de ferramentas visando a consolidação do método proposto.
+
+\pagebreak
 \section{Definições}
 
 Será utilizado um conjunto de ferramentas e serviços para o objetivo proposto, citados à seguir:
 
 \subsection{C++}
 
-Linguagem de programação, compilada, multi-paradigma de uso geral, criada em 1979 por Bjarne Stroustrup, padronizada em 1998. Sera a linguagem de programação escolhida para o desenvolvimento do estudo.
+Linguagem de programação, compilada, multi-paradigma de uso geral, criada em 1979 por Bjarne Stroustrup, padronizada em 1998. Será a linguagem de programação escolhida para o desenvolvimento do estudo.
 
+\pagebreak
 \subsection{Biblioteca de Engenharia}
 
 Biblioteca inicialmente criada pelo professor Doutor André Dantas com foco em ferramentas matemáticas para ajudar a compreensão do curso de Engenharia de Computação. Escrita em C++ conta com classes fundamentais para o processamento dos dados, como manipulação de Matrizes e Polinômios. Esta será a ferramenta de trabalho na qual criaremos a suíte de testes.
@@ -226,7 +241,7 @@ Também é previsto para a biblioteca, como planejamento para os futuros recurso
 	\item Sintonizar sistemas dado modelo escolhido, método de sintonia e entrada de dados, achando melhor combinação;
 \end{itemize}
 
-
+\pagebreak
 \subsection{CMAKE}
 É um sistema de gestão de \textit{build} de projetos. É livre de plataforma e opensource. Foi designado para suportar hierarquias de diretório e aplicativos que dependam de outras bibliotecas. É usado em conjunto com meios de \textit{build}, como o make, Xcode da Apple e o Visual Studio da Microsoft. Tem dependências mínimas. Requer apenas um compilador C++ no seu próprio sistema de \textit{build}.
 
@@ -234,7 +249,7 @@ O CMake pode localizar executáveis, arquivos e bibliotecas. Essas localizaçõe
 
 O CMAKE é utilizado em grandes projetos opensource: Blender, CLion, cURL, LLVM e Clang, OpenCV e ZeroMQ são exemplos de projetos.
 
-
+\pagebreak
 \subsection{SSH}
 É um protocolo de rede encriptado operando na camada 7 do modelo OSI. Permite o login remoto e possibilidade de se operar outros serviços por meio desta atravpes de redes não seguras.
 
@@ -249,6 +264,7 @@ Esta provê um canal seguro em uma arquitetura cliente-servidor, conectando uma 
 
 O SSH foi projetado para ser uma substituição para o Telnel e para protocolos de shell remotos inseguros, como os protocolos Berkeley rlogin, rsh e rexec.
 
+\pagebreak
 \subsection{GIT}
 
 Ferramenta de controle de versão criado por \textbf{Linus Torvalds} em 2005. É amplamente utilizada para desenvolvimento de software e outras tarefas de controle de versão. É um sistema distribuído de controle de revisão com ênfase na velocidade e não concomitante ao repositório remoto. 
@@ -289,12 +305,14 @@ O foco do GIT é fazer com que os dados não sejam perdidos. Abortar operações
 \subsubsection{Compactação periódica de código}
 Git armazena cada novo arquivo criado como um arquivo separado. Compactar arquivos individualmente torna o processo lento e ineficiente. Como estratégia para otimização de tempo, o GIT empacota grupos de arquivos em unidades chamadas \textit{packfile} e as compacta aumentando drásticamente a velocidade do repositório.
 
+\pagebreak
 \subsection{GitHub}
 É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no hanking do Alexa.
 
+\pagebreak
 \subsection{Teste}
 
-O conceito de teste é um termo abrangente. Vias gerais, significa firmar convicção de um juiz sobre a verdade dos fatos alegados pelas partes em juízo. Em programação este termo pode ser lido como "a convicção do desenvolvedor" sobre a confiabilidade de que o sistema desenvolvido irá funcionar conforme esperado.
+O conceito de teste é abrangente. Vias gerais, significa firmar convicção de um juiz sobre a verdade dos fatos alegados pelas partes em juízo. Em programação este termo pode ser lido como "a convicção do desenvolvedor" sobre a confiabilidade de que o sistema desenvolvido irá funcionar conforme esperado.
 
 Há algumas fases para o teste de software. Cada um visa abranger um escopo no ciclo de desenvolvimento. Podemos citar os seguintes:
 \begin{itemize}
@@ -311,9 +329,11 @@ A rotina de testes, apesar de ser de fácil compreensão, requer disciplina por 
 
 É o menor grupo de testes. Estes testam funções específicas. Dado uma entrada e saída conhecidas pelo desenvolvedor, a suite de testes comparará o resultado da aplicação da função com a saída esperada. Dependendo do método de asserção escolhido, o teste irá passar ou falhar.
 
+\pagebreak
 \subsection{CXXTest}
 É um framework de testes unitários para C++ que é similar, em essência, ao JUnit, CppUnit e xUnit. É de fácil utilização porque não requer precompilar a biblioteca de teste. Também não requer recursos avançados, como RTTI por exemplo, e possui uma forma bastante flexível de descoberta de testes.
 
+\pagebreak
 \subsection{TravisCI}
 É um serviço se integração contínua usado para executar o processo de build e teste de projetos de software geralmente hospedados no GitHub.
 
@@ -321,6 +341,7 @@ A rotina de testes, apesar de ser de fácil compreensão, requer disciplina por 
 % Seção de explicações
 % ----------------------------------------------------------i
 
+\pagebreak
 \section{Desenvolvimento}
 
 \subsection{Problemática}
