@@ -28,7 +28,6 @@
 % ------------------------------------------------------------------------
 
 \documentclass[
-	% -- opções da classe memoir --
 	article,			% indica que é um artigo acadêmico
 	12pt,				% tamanho da fonte
 	oneside,			% para impressão apenas no recto. Oposto a twoside
@@ -39,8 +38,8 @@
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
 	% -- opções do pacote babel --
-	english,			% idioma adicional para hifenização
-	brazil,				% o último idioma é o principal do documento
+	english,			
+	brazil,
 	sumario=tradicional
 	]{abntex2}
 
@@ -192,6 +191,18 @@ Também abordaremos as forma de como a comunidade opensource conseguirá manipul
  \textbf{Palavras-chave}: Teste, Test Driven Development, Integração Contínua
 \end{resumoumacoluna}
 
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This is the english abstract.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Key-words}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
 \textual
 
 % ----------------------------------------------------------
@@ -220,6 +231,13 @@ A abordagem de concepção de softwares guiado à testes será implementada sobr
 
 O foco deste projeto visa a criação de uma metodologia de trabalho assim como a utilização de uma série de ferramentas visando a consolidação do método proposto.
 
+Como resultado, o presente projeto visa alcançar os seguintes objetivos:
+\begin{itemize}
+	\item{Tornar a biblioteca segura, ou seja, garantir que seu funcionamento seja conforme esperado;}
+	\item{Aumentar a participação de desenvolvedores na construção e utilização da biblioteca e}
+	\item{Reduzir o custo de implementação, uma vez que este tende a aumentar exponencialmente com o acréscimo da complexidade.}
+\end{itemize}
+
 \pagebreak
 \section{Definições}
 
@@ -228,6 +246,10 @@ Será utilizado um conjunto de ferramentas e serviços para o objetivo proposto,
 \subsection{C++}
 
 Linguagem de programação, compilada, multi-paradigma de uso geral, criada em 1979 por Bjarne Stroustrup, padronizada em 1998. Será a linguagem de programação escolhida para o desenvolvimento do estudo.
+
+O site oficial linguagem é \href{http://www.cplusplus.com/}{http://www.cplusplus.com/}
+
+\nocite{cplusplus.com}
 
 \pagebreak
 \subsection{Biblioteca de Engenharia}
@@ -241,6 +263,8 @@ Também é previsto para a biblioteca, como planejamento para os futuros recurso
 	\item Sintonizar sistemas dado modelo escolhido, método de sintonia e entrada de dados, achando melhor combinação;
 \end{itemize}
 
+O link para biblioteca: \href{https://github.com/EngineeringLibrary/ECO}{https://github.com/EngineeringLibrary/ECO}
+
 \pagebreak
 \subsection{CMAKE}
 É um sistema de gestão de \textit{build} de projetos. É livre de plataforma e opensource. Foi designado para suportar hierarquias de diretório e aplicativos que dependam de outras bibliotecas. É usado em conjunto com meios de \textit{build}, como o make, Xcode da Apple e o Visual Studio da Microsoft. Tem dependências mínimas. Requer apenas um compilador C++ no seu próprio sistema de \textit{build}.
@@ -251,13 +275,13 @@ O CMAKE é utilizado em grandes projetos opensource: Blender, CLion, cURL, LLVM 
 
 \pagebreak
 \subsection{SSH}
-É um protocolo de rede encriptado operando na camada 7 do modelo OSI. Permite o login remoto e possibilidade de se operar outros serviços por meio desta atravpes de redes não seguras.
+É um protocolo de rede encriptado operando na camada 7 do modelo OSI. Permite o login remoto e possibilidade de se operar outros serviços por meio desta através de redes não seguras.
 
-Esta provê um canal seguro em uma arquitetura cliente-servidor, conectando uma aplicação de cliente SSH com o servidor. Aplicações comuns incluem:
+Esta provê um canal seguro em uma arquitetura cliente-servidor. Aplicações do SSH incluem:
 
 \begin{itemize}
 	\item{Login em linha de comando;}
-	\item{Execução remota de comandos,}
+	\item{Execução remota de comandos;}
 	\item{Transferência segura de arquivos e}
 	\item{Tunelamento de serviços através de rede criptografada.}
 \end{itemize}
@@ -308,6 +332,12 @@ Git armazena cada novo arquivo criado como um arquivo separado. Compactar arquiv
 \pagebreak
 \subsection{GitHub}
 É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no hanking do Alexa.
+
+Apesar de fundamentalmente o Github ser utilizado para hospedagem de código, este possui os seguintes recursos:
+
+\begin{itemize}
+	\item{Documentação, incluindo renderização de código Markdown em uma variedade grande de formatos}
+\end{itemize}
 
 \pagebreak
 \subsection{Teste}
@@ -384,41 +414,27 @@ Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no 
 % ---
 % Conclusão
 % ---
-%\section*{Considerações finais}
-%\addcontentsline{toc}{section}{Considerações finais}
+\section*{Considerações finais}
+\addcontentsline{toc}{section}{Considerações finais}
 
-%\lipsum[1]
+\lipsum[1]
 
-%\begin{citacao}
-%\lipsum[2]
-%\end{citacao}
+\begin{citacao}
+\lipsum[2]
+\end{citacao}
 
-%\lipsum[3]
+\lipsum[3]
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
 \postextual
 
-% ---
-% Título e resumo em língua estrangeira
-% ---
-
-% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
-
-% titulo em inglês
-%\titulo{Canonical academic article model with \abnTeX}
-%\emptythanks
-%\maketitle
-
-% resumo em português
-% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
-% ---
-
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{abntex2-modelo-references}
+\bibliography{artigo_joey}
+
 
 % ----------------------------------------------------------
 % Glossário
@@ -451,19 +467,21 @@ Ao passo que irá sendo construído a suite, o mesmo terá seu versionamento no 
 % Anexos
 % ----------------------------------------------------------
 \cftinserthook{toc}{AAA}
+
 % ---
 % Inicia os anexos
 % ---
 %\anexos
-%\begin{anexosenv}
 
-% ---
+%\begin{anexosenv}
+%
+%% ---
 %\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
 %parturient montes nascetur ridiculus mus}
-% ---
-
+%% ---
+%
 %\lipsum[31]
-
+%
 %\end{anexosenv}
 
 \end{document}
