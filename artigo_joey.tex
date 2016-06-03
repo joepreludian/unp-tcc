@@ -60,6 +60,7 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
+
 % ---
 		
 % ---
@@ -181,22 +182,16 @@
 
 % resumo em português
 \begin{resumoumacoluna}
-A proposta do artigo é criar uma suite de testes para biblioteca de engenharia. Esta abordará a construção da biblioteca e os passos necessários para torná-la testável. 
+A proposta do artigo é criar uma suite de testes para biblioteca de engenharia. Esta abordará a construção da biblioteca e os passos necessários para torná-la testável.
 Haverá a configuração do sistema de build para que esta possa ser integrada às ferramentas que realizem os testes e métricas de forma automatizada, assim como rege o funcionamento da Integração contínua.
 Também abordaremos as forma de como a comunidade opensource conseguirá manipular o código, criando um modelo de trabalho progressivo.
 
  \vspace{\onelineskip}
  
  \noindent
- \textbf{Palavras-chave}: teste, suite de testes, Integração Contínua
+ \textbf{Palavras-chave}: Teste, Test Driven Development, Integração Contínua
 \end{resumoumacoluna}
 
-% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
-% ---
-
-% ----------------------------------------------------------
-% ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
 \textual
 
 % ----------------------------------------------------------
@@ -212,11 +207,59 @@ código fonte de fácil manutenção e confiabilidade do código.
 
 A integração contínua, na prática, é uma técnica de mesclar o código de vários desenvolvedores em uma linha comum compartilhada de forma a ser feito várias vezes ao dia. Foi proposto inicialmente por Grady Booch em seu método 1991 e é usado com muita intensidade no método de desenvolvimento ágil XP, que advoga realizar o processo de integração continua mais de uma vez por dia.
 
-% ----------------------------------------------------------
-% Seção de explicações
-% ----------------------------------------------------------i
+\section{Definições}
 
-\section{Desenvolvimento}
+Será utilizado um conjunto de ferramentas e serviços para o objetivo proposto, citados à seguir:
+
+\subsection{C++}
+
+Linguagem de programação, compilada, multi-paradigma de uso geral, criada em 1979 por Bjarne Stroustrup, padronizada em 1998. Sera a linguagem de programação escolhida para o desenvolvimento do estudo.
+
+\subsection{Biblioteca de Engenharia}
+
+Biblioteca inicialmente criada pelo professor Doutor André Dantas com foco em ferramentas matemáticas para ajudar a compreensão do curso de Engenharia de Computação. Escrita em C++ conta com classes fundamentais para o processamento dos dados, como manipulação de Matrizes e Polinômios. Esta será a ferramenta de trabalho na qual criaremos a suíte de testes.
+
+Também é previsto para a biblioteca, como planejamento para os futuros recursos:
+
+\begin{itemize}
+	\item Representar modelos matemáticos para sistemas conhecidos;
+	\item Sintonizar sistemas dado modelo escolhido, método de sintonia e entrada de dados, achando melhor combinação;
+\end{itemize}
+
+
+\subsection{CMAKE}
+É um sistema de gestão de \textit{build} de projetos. É livre de plataforma e opensource. Foi designado para suportar hierarquias de diretório e aplicativos que dependam de outras bibliotecas. É usado em conjunto com meios de \textit{build}, como o make, Xcode da Apple e o Visual Studio da Microsoft. Tem dependências mínimas. Requer apenas um compilador C++ no seu próprio sistema de \textit{build}.
+
+O CMake pode localizar executáveis, arquivos e bibliotecas. Essas localizações são armazenadas em um cache que pode ser refinado antes de gerar os arquivos de \textit{build}.
+
+O CMAKE é utilizado em grandes projetos opensource: Blender, CLion, cURL, LLVM e Clang, OpenCV e ZeroMQ são exemplos de projetos.
+
+
+\subsection{GIT}
+
+Ferramenta de controle de versão criado por \textbf{Linus Torvalds} em 2005. É amplamente utilizada para desenvolvimento de software e outras tarefas de controle de versão. É um sistema distribuído de controle de revisão com ênfase na velocidade e não concomitante ao repositório remoto. 
+
+O design desse projeto foi a síntese da experiência de Torvalds com o projeto Linux. Ele precisava manter um projeto largo e distribuído ao mesmo tempo que precisava de um ambiente de trabalho funcional. Pra isso adotou as seguintes escolhas de implementação:
+
+\subsubsection{Forte suporte para desenvolvimento não linear}
+Possui suporte rápido para ramificação (branching) e mesclagem (merging) e inclui ferramentas específicas para visualizar e navegar no histórico de desenvolvimento de modo a poder reconstruir toda a arvore de commits. Commit é um conjunto de alterações feita em um código fonte.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{images/git_workflow.png}
+\caption{Exemplo de desenvolvimento não linear. Linhas horizontais seriam as branches. Bolinhas, commits, setas entre as branchs, operações de Merge}
+\label{img_git_workflow}
+\end{figure}
+
+\subsubsection{Ambiente Distribuído}
+
+O GIT dá à cada desenvolvedor uma cópia local de todo o histórico de desenvolvimento. Essas modificações são importadas como branches adicionais de desenvolvimento e podem ser mescladas da mesma forma feita localmente.
+
+\subsubsection{Compatibilidade com os protocolos existentes}
+Repositório é o nome dado ao local de trabalho do GIT. Repositórios podem ser publicados via protocolo HTTP, FTP, rsync (até a versão 2.8.0), a um protocolo GIT utilizando socket ou SSH. Este último é amplamente utilizado por sua segurança e flexibilidade.
+
+\subsection{GitHub}
+É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no hanking do Alexa.
 
 \subsection{Teste}
 
@@ -237,33 +280,41 @@ A rotina de testes, apesar de ser de fácil compreensão, requer disciplina por 
 
 É o menor grupo de testes. Estes testam funções específicas. Dado uma entrada e saída conhecidas pelo desenvolvedor, a suite de testes comparará o resultado da aplicação da função com a saída esperada. Dependendo do método de asserção escolhido, o teste irá passar ou falhar.
 
-\subsection{Biblioteca de Engenharia}
-O software o qual será desenvolvido a suite de testes será a biblioteca de Engenharia, criada colaborativamente pelo professor André Felipe Dantas.\\
-A biblioteca foi desenvolvida em C++ e possui as seguintes funcionalidades, inicialmente:
-
-\begin{itemize}
-	\item Trabalhar matrizes;
-	\item Trabalhar com polinômios;
-	\item Realizar operações matriciais;
-\end{itemize}
-
-Também é previsto para a biblioteca, como roadmap os seguintes recursos:
-
-\begin{itemize}
-	\item Representar modelos matemáticos para sistemas conhecidos;
-	\item Sintonizar sistemas dado modelo escolhido, método de sintonia e entrada de dados, achando melhor combinação;
-\end{itemize}
-
-Usaremos os seguintes recursos:
-
-\subsection{GIT}
-O GIT é um software de versionamento de código, desenvolvido por Linux Torvalds, que faz com que o código fonte possa ser mantido sobre um sistema de controle de versão. Este é importante pois contribui para o processo colaborativo, essencial na comunidade Opensource.
+\subsection{CXXTest}
+É um framework de testes unitários para C++ que é similar, em essência, ao JUnit, CppUnit e xUnit. É de fácil utilização porque não requer precompilar a biblioteca de teste. Também não requer recursos avançados, como RTTI por exemplo, e possui uma forma bastante flexível de descoberta de testes.
 
 \subsection{TravisCI}
 É um serviço se integração contínua usado para executar o processo de build e teste de projetos de software geralmente hospedados no GitHub.
 
-\subsection{CXXTest}
-É um framework de testes unitários para C++ que é similar, em essência, ao JUnit, CppUnit e xUnit. É de fácil utilização porque não requer precompilar a biblioteca de teste. Também não requer recursos avançados, como RTTI por exemplo, e possui uma forma bastante flexível de descoberta de testes.
+% ----------------------------------------------------------
+% Seção de explicações
+% ----------------------------------------------------------i
+
+\section{Desenvolvimento}
+
+\subsection{Problemática}
+
+A atual biblioteca possui vários colaboradores. Várias classes da mesma possuem dependências de bibliotecas de base. Um exemplo é a classe de Operações Matriciais que depende da classe de Matriz, por exemplo. Garantir que esta classe esteja funcionanco é crucial para a criação de novas Classes, que dependem destas.
+
+Se faz necessário garantir a evolução da biblioteca, com muitos colaboradores de modo que a mesma possa ter a garantia de ser utilizada funcionando conforme esperado.
+
+Conforme o código fonte vai se tornando maior, o nível de complexidade do algorítmo cresce e a possibilidade de se implantar erros aumenta. Um código não coberto por testes implica que este passará a se tornar de difícil compreensão, consequentemente levando à novas implementações cada vez mais lentas e onerosas para o time.
+
+
+\subsection{Metodologia}
+Com base no problema proposto se faz necessário utilizar a abordagem do desenvolvimento orientado à testes (TDD, do inglês "Test Driven Development"), que consiste em uma aplicação que fará o teste do software em questão com base em suas classes e métodos em um algorítmo de teste unitário.
+
+O projeto será formatado utilizando o \textit{CMake}. Este, por sua vez, organizará todo o código fonte do projeto de forma que seja agnóstico de compilador, ou seja, qualquer IDE será capaz de utilizar esse código fonte e, dependendo da arquitetura e compilador utilizado, o cmake será capaz de gerar a estrutura do projeto para o alvo. 
+
+O teste, por sua vez, é realizado com a suíte de testes \textbf{CXXTest}, através de um processo que consiste em dois passos:
+
+\begin{itemize}
+	\item{Criação de um arquivo de header com as macros do CXXTEST realizando os testes de asserção;}
+	\item{Execução do comando intermédiário da biblioteca que adicionará aos headers a lógica necessária para o funcionamento da biblioteca, e por fim,}
+	\item{Compilação e execução da suíte de testes que nos retornará um sumário de erros ou sucesso da ferramenta}
+\end{itemize}
+
+Com isso, integraremos tanto o código fonte quanto o código dos testes do projeto no GIT e faremos o \textit{push} desse repositório para o \textit{GitHUB}. Neste passo, teremos integrado ao projeto um serviço de build que estará escutando o repositório através de \textit{Webhooks} e disparará uma tarefa de coletar o último commit e executará a rotina de teste proposta.
 
 \subsection{Processo de desenvolvimento}
 Será mapeado, individualmente os módulos da aplicação fazendo uma análise do quão acoplado está o código. Com base nesses dados será iniciado o processo de desacoplação de código e criação dos testes sob demanda.
