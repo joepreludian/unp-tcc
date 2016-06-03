@@ -332,16 +332,30 @@ Git armazena cada novo arquivo criado como um arquivo separado. Compactar arquiv
 
 \pagebreak
 \subsection{GitHub}
-É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no hanking do Alexa.
+É um serviço de hospedagem de projetos que utilizam o GIT como sistema de controle de versionamento. Este é um dos serviços mais utilizados no mundo por desenvolvedores, sendo posicionado como 65$^{\circ}$ lugar no ranking do Alexa.
+\\
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.4]{images/github_main.png}
+\caption{Tela inicial do projeto opencv no Github. Apresenta informações Sobre Commits, Issues, Pull requests, entre outros. https://github.com/Itseez/opencv Acesso em 3 jun. 2016}
+\label{github_main}
+\end{figure}
 
-Apesar de fundamentalmente o Github ser utilizado para hospedagem de código, este possui os seguintes recursos:
+Apesar de fundamentalmente o Github ser utilizado para hospedagem de código, este atua como uma rede social, possuindo, como principais recursos:
 
 \begin{itemize}
-	\item{Documentação, incluindo renderização de código Markdown em uma variedade grande de formatos}
+	\item{Documentação, incluindo renderização de código Markdown em uma variedade grande de formatos;}
+	\item{Issue Tracking - Capaz de adicionar pedidos de implementação, reporte de bugs e discussões acerca do projeto;}
+	\item{Wikis - Espaço para publicação de páginas estáticas;}
+	\item{Pull Requests com code review e comentários;}
+	\item{Histórico de commits;}
+	\item{Graphs - Um dashboard com gráficos de participação entre os colaboradores;}
+	\item{Pequenos Sites estáticos - Pode-se usar o repositório como um site estático. Útil para manuais ou homepages de projetos e}
+	\item{GIST - Site para a publicação de trechos de código, mais conhecidos como \textit{code snippets}.}
 \end{itemize}
 
 \pagebreak
-\subsection{Teste}
+\subsection{Desenvolvimento orientado à testes}
 
 O conceito de teste é abrangente. Vias gerais, significa firmar convicção de um juiz sobre a verdade dos fatos alegados pelas partes em juízo. Em programação este termo pode ser lido como "a convicção do desenvolvedor" sobre a confiabilidade de que o sistema desenvolvido irá funcionar conforme esperado.
 
@@ -362,11 +376,38 @@ A rotina de testes, apesar de ser de fácil compreensão, requer disciplina por 
 
 \pagebreak
 \subsection{CXXTest}
+
 É um framework de testes unitários para C++ que é similar, em essência, ao JUnit, CppUnit e xUnit. É de fácil utilização porque não requer precompilar a biblioteca de teste. Também não requer recursos avançados, como RTTI por exemplo, e possui uma forma bastante flexível de descoberta de testes.
 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.4]{images/cxxtest_simpletest.png}
+\caption{Exemplo de código da suite de testes utilizando a biblioteca CXXTest. Extraído da URL http://cxxtest.com/guide.html em 3 jun. 2016}
+\label{cxxtest_simpletest}
+\end{figure}
+
 \pagebreak
-\subsection{TravisCI}
-É um serviço se integração contínua usado para executar o processo de build e teste de projetos de software geralmente hospedados no GitHub.
+\subsection{Integração Contínua}
+É uma prática de desenvolvimento de software de modo a mesclar trabalho de todos os desenvolvedores em um ramo principal compartilhado.
+
+\begin{citacao}
+Continuous  integration  (CI)  is  a  software  engineering practice of frequently merging all developer working copies with  a  shared  main  branch
+	\cite[Introduction]{vasilescu2015continuous}
+\end{citacao}
+
+\subsubsection{TravisCI}
+É um serviço se integração contínua usado para executar o processo de build de projetos de software hospedados no GitHub. É um serviço pago para projetos privados, mas sempre será livre para projetos opensource. 
+Através de um arquivo de configuração o Travis, ao receber um evento do github, executa o processo de build conforme roteiro configurado.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.4]{images/travisci_dashboard.png}
+\caption{Painel de controle do TravisCI no projeto EngineeringLibrary/ECO. Acesso em 3 jun. 2016}
+\label{travisci_dashboard}
+\end{figure}
+
+
 
 % ----------------------------------------------------------
 % Seção de explicações
@@ -454,6 +495,7 @@ Com isso, integraremos tanto o código fonte quanto o código dos testes do proj
 \nocite{gitscm.4}
 \nocite{gitscm.5}
 \nocite{gitscm.6}
+\nocite{cxxtest.1}
 
 
 % ----------------------------------------------------------
