@@ -1,0 +1,21 @@
+--- CITACAO URL ---
+
+@inbook{cpluspluscom.1,
+    address="S\~ao Paulo",
+    booktitle="A Brief Description - C++ Information",
+    organization="cplusplus.com",
+    title="A Brief Description - C++ Information",
+    url="http://www.cplusplus.com/info/description/",
+    urlaccessdate="3 jun. 2016",
+    year="2005"
+}
+
+--- CITACAO ARTICLE ---
+
+@manual{testdrivendevelopment.1,
+    author="David Janzen",
+    organization="IEEE Computer Society",
+    title="Test-Driven Development: Concepts, Taxonomy, and Future Direction",
+    url="http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1034&context=csse_fac",
+    year=2015
+}
